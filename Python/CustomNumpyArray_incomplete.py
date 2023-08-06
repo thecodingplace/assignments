@@ -80,7 +80,7 @@ import subprocess
 try: 
     import pygrab
 except:
-    subprocess.run("pip3 install pygrab")
+    subprocess.run("pip3 install pygrab", stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     import pygrab
 
 class UnitTestTracker():
