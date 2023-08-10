@@ -1,21 +1,31 @@
 
 #                                                              Directions:
-# You are not allowd to use any libraries to implement this function other than the two already provided.
-# Note: you may need to run "pip3 install pygrab" or  "pip3 install pandas" to install the libraries
+# You are not allowd to use any libraries to implement this class.
 
 """
-Your objective in this assignment is to complete the scrape() function. This function should make an http request 
-to "https://www.worldometers.info/geography/alphabetical-list-of-countries/" and return the data for all the 
-countries as a pandas data frame. 
+Your objective in this assignment is to complete the BST() class below. The BST (Binary Search Tree) class should be able to perform the following operations:
 
-Hint: visit the website to get a general idea of the layout before you begin. 
-Hint: Read the documentation about both libraries before using them.
+Initialization (__init__): You should be able to initialize the BST with an optional list of data. If provided, the data should be inserted into the BST in the order given.
+
+Add (add): This method should take a data value and insert it into the BST according to the binary search tree property.
+
+Contains (contains): This method should take a target value and return True if the target is in the BST, and False otherwise.
+
+To List (to_list): This method should return a list of all the data in the BST, in ascending order.
+
+To List Helper (__to_list_helper): This private method is a helper function for the to_list method. You may use it to implement the functionality of to_list, or you may choose to implement to_list in a different way.
+
+Please make sure to adhere to the principles of object-oriented programming and encapsulate the Node class within the BST class.
+
+Remember, you are not allowed to use any external libraries, and your implementation should be done using only basic Python constructs.
+
+Good luck!
 """
 
 # Once you're done, you can run this file and you will see a few tests of your code. If the output for your functions and the 
 # actual output are the same, then your code is correct.
 
-# If you need a reference, a correct implemntation of the function(s) can be found here: https://raw.githubusercontent.com/thecodingplace/assignments/main/Python/WebScrapeCountries_complete.py
+# If you need a reference, a correct implemntation of the function(s) can be found here: https://raw.githubusercontent.com/thecodingplace/assignments/main/Python/BST_complete.py
 # Please note that there can be several correct implementations to a function
 
 class BST():
@@ -37,9 +47,6 @@ class BST():
 
     def __to_list_helper(self, curr, target):
         pass
-
-
-
 
 
 
@@ -83,16 +90,17 @@ class UnitTestTracker():
         print(result)
 
 
-code = pygrab.get('https://raw.githubusercontent.com/thecodingplace/assignments/main/Python/WebScrapeCountries_complete.py').text
+code = pygrab.get('https://raw.githubusercontent.com/thecodingplace/assignments/main/Python/BST_complete.py').text
 tracker = UnitTestTracker()
 for i in range (2):
     if i == 1:
         exec(code)
         tracker.add_type = 'key'
     
-    lst = list((np.random.rand(40) * 100 - 50).astype(int))
-    bst = BST(lst)
+    for i in range (3):
+        lst = list((np.random.rand(40) * 100 - 50).astype(int))
+        bst = BST(lst)
 
-    tracker.add(bst.to_list, args=[])
+        tracker.add(bst.to_list, args=[])
 
 tracker.display()
