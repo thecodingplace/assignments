@@ -34,7 +34,7 @@
 # Once you're done, you can run this file and you will see a few tests of your code. If the output for your functions and the 
 # actual output are the same, then your code is correct.
 
-# If you need a reference, a correct implemntation of the functions can be found here: https://raw.githubusercontent.com/thecodingplace/assignments/main/Python/CustomNumpyArray_complete.py
+# If you need a reference, a correct implemntation of the functions can be found here: https://raw.githubusercontent.com/thecodingplace/assignments/main/Python/WebScrapeCountries_complete.py
 # Though, please note that there can be several correct implementations to a function
 
 import pygrab
@@ -42,8 +42,6 @@ import pandas as pd
 
 def scrape(url):
     pass
-
-
 
 
 
@@ -88,14 +86,13 @@ class UnitTestTracker():
         print(result)
 
 
-code = pygrab.get('https://raw.githubusercontent.com/thecodingplace/assignments/main/Python/CustomNumpyArray_complete.py').text
+code = pygrab.get('https://raw.githubusercontent.com/thecodingplace/assignments/main/Python/WebScrapeCountries_complete.py').text
 tracker = UnitTestTracker()
 for i in range (2):
     if i == 1:
         exec(code)
         tracker.add_type = 'key'
     
-    var = scrape("https://www.worldometers.info/geography/alphabetical-list-of-countries/")
     tracker.add(scrape, args=["https://www.worldometers.info/geography/alphabetical-list-of-countries/"])
 
 tracker.display()
