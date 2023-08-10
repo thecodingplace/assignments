@@ -1,41 +1,22 @@
 
 #                                                              Directions:
-# You are not allowd to use any libraries to implement these functions. 
-#
-# 1. Implement the sum Method:
-# Inside the sum method, calculate the sum of all the elements in the self.data list.
-# You can use the built-in sum function or a loop to achieve this.
-# Return the calculated sum.
+# You are not allowd to use any libraries to implement this function other than the two already provided.
+# Note: you may need to run "pip3 install pygrab" or  "pip3 install pandas" to install the libraries
 
-# 2. Implement the average Method:
-# Inside the average method, calculate the average of the elements in the self.data list.
-# You can use the sum method you implemented earlier and divide it by the length of the list.
-# Return the calculated average.
+"""
+Your objective in this assignment is to complete the scrape() function. This function should make an http request 
+to "https://www.worldometers.info/geography/alphabetical-list-of-countries/" and return the data for all the 
+countries as a pandas data frame. 
 
-# 3. Implement the min Method:
-# Inside the min method, find the minimum value in the self.data list.
-# You can use the built-in min function or a loop to achieve this.
-# Return the minimum value.
-
-# 4. Implement the max Method:
-# Inside the max method, find the maximum value in the self.data list.
-# You can use the built-in max function or a loop to achieve this.
-# Return the maximum value.
-
-# 5. Implement the __str__ Method:
-# Inside the __str__ method, you need to create a string representation of the self.data list but with curly braces instead of square brackets.
-# You can use string concatenation or a loop to build the string.
-# Start with a left curly brace "{, then add the elements of the list separated by commas and spaces, and finally add a right curly brace }".
-# Return the resulting string.
-
-
-# NOTE: The only functions you need to change are sum(), average(), min(), max(), and __str__(). Don't change any of the other code.
+Hint: visit the website to get a general idea of the layout before you begin. 
+Hint: Read the documentation about both libraries before using them.
+"""
 
 # Once you're done, you can run this file and you will see a few tests of your code. If the output for your functions and the 
 # actual output are the same, then your code is correct.
 
-# If you need a reference, a correct implemntation of the functions can be found here: https://raw.githubusercontent.com/thecodingplace/assignments/main/Python/WebScrapeCountries_complete.py
-# Though, please note that there can be several correct implementations to a function
+# If you need a reference, a correct implemntation of the function(s) can be found here: https://raw.githubusercontent.com/thecodingplace/assignments/main/Python/WebScrapeCountries_complete.py
+# Please note that there can be several correct implementations to a function
 
 import pygrab
 import pandas as pd
