@@ -15,18 +15,20 @@ Inside the load method, read the data from the file specified in the parameter '
 with the data that's in that file. You can assume that the file exists.
 
 NOTE: The only functions you need to change are append(), save(), and load(). Don't change any of the other code.
+
+NOTE: The second test case (__str__) will either result in an empty array or error if save() and load() are not written correctly.
 """
 
 # Once you're done, you can run this file and you will see a few tests of your code. If the output for your functions and the 
 # actual output are the same, then your code is correct.
 
 # If you need a reference, a correct implemntation of the function(s) can be found here: 
-# https://raw.githubusercontent.com/thecodingplace/assignments/main/Python/CustomNumpyArray_complete.py
+# https://raw.githubusercontent.com/thecodingplace/assignments/main/Python/ArrayCashe_complete.py
 # Please note that there can be several correct implementations to a function
 
 class Array():
     # Constructor. Do not change the code in this function
-    def __init__ (self, lst):
+    def __init__ (self, lst=[]):
         self.data = list(lst)
     
     def append(self, new_element):
@@ -52,6 +54,8 @@ class Array():
 #                              DO NOT MODIFY ANY CODE BELOW THIS LINE
 # ===============================================================================================
 import subprocess
+import os
+import random
 try: 
     import pygrab
 except:
@@ -77,6 +81,18 @@ class UnitTestTracker():
         elif self.add_type.lower() == 'attempt':
             self.student_ans.append(res)
     
+    def add_state(self, obj, func, args=[]):
+        try:
+            res = func(*args)
+            res = str(obj)
+        except Exception as err:
+            res = f'Error in function {func.__name__}() : {err}'
+        
+        if self.add_type.lower() == 'key':
+            self.ans_key.append(res)
+            self.functions.append(func)
+        elif self.add_type.lower() == 'attempt':
+            self.student_ans.append(res)
 
     def display(self):
         template = "====================  Function Name  ======================\n\nNAME()\n\n======================  Your Answer  ======================\nATTEMPT\n\n====================  Correct Result  =====================\nANSWER\n\n===========================================================\n\n\n\n\n\n\n\n\n\n\n\n\n"
@@ -86,18 +102,28 @@ class UnitTestTracker():
         print(result)
 
 
-code = pygrab.get('https://raw.githubusercontent.com/thecodingplace/assignments/main/Python/CustomNumpyArray_complete.py').text
+code = pygrab.get('https://raw.githubusercontent.com/thecodingplace/assignments/main/Python/ArrayCashe_complete.py').text
 tracker = UnitTestTracker()
+lst = [random.randint(0, 100_000) for _ in range (10)]
+num = random.randint(0, 100_000)
 for i in range (2):
     if i == 1:
         exec(code)
         tracker.add_type = 'key'
     
-    var = Array([1, 5, 645, 345, 7, 546, 8])
-    tracker.add(var.sum)
-    tracker.add(var.average)
-    tracker.add(var.max)
-    tracker.add(var.min)
+    var = Array(lst)
+
+    tracker.add_state(var, var.append, args=[num])
+
+    var.save('./ArrayCasheAssignment.txt')
+    var = Array([])
+    var.load('./ArrayCasheAssignment.txt')
+
     tracker.add(var.__str__)
+
+    try:
+        os.remove('/ArrayCasheAssignment.txt')
+    except Exception:
+        pass
 
 tracker.display()

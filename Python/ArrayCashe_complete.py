@@ -1,5 +1,5 @@
 class Array():
-    def __init__ (self, lst):
+    def __init__ (self, lst=[]):
         self.data = list(lst)
     
     def append(self, new_element):
