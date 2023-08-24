@@ -122,7 +122,7 @@ for i in range (2):
     tracker.add(var.__str__)
 
     try:
-        os.remove('/ArrayCasheAssignment.txt')
+        os.remove('ArrayCasheAssignment.txt')
     except Exception:
         pass
 
